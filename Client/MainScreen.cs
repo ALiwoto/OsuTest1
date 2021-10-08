@@ -5,6 +5,7 @@ using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Screens;
 using osu.Framework.Graphics.Video;
+using osu.Framework.Audio;
 using osuTK.Graphics;
 
 namespace Test1.Client
@@ -14,11 +15,11 @@ namespace Test1.Client
         [BackgroundDependencyLoader]
         private void load()
         {
+            Hide();
             InternalChildren = new Drawable[]
             {
-				new Video("/home/mrwoto/Ali/Animes/Redo/Kaifuku Jutsushi - 8.mp4", true),
+				//new Video("/home/mrwoto/Ali/Animes/Redo/Kaifuku Jutsushi - 8.mp4", true),
             };
-			
         }
     }
 }

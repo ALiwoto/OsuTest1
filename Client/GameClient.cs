@@ -1,4 +1,5 @@
-
+using System.IO;
+using osu.Framework.Audio.Track;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Screens;
@@ -18,10 +19,25 @@ namespace Test1.Client {
 
         protected override void LoadComplete()
         {
-            base.LoadComplete();
+            this.Hide();
+            this.Size = new(0, 0);
+            TrackBass b = new(File.OpenRead("/home/mrwoto/Music/01 - Kyoumen no Nami.mp3"));
+            //TrackBass b = new(File.OpenRead("/home/mrwoto/Ali/Animes/Black/Black Clover - 165 [480p].mkv"));
+            
+            b.Failed += () => {
+                System.Console.WriteLine("failed");
+            };
+            b.Completed += () => {
+                System.Console.WriteLine("completed");
+            };
+            //
+            Audio.AddItem(b);
+            //base.LoadComplete();
 			
             screenStack.Push(new MainScreen());
-			;
+            b.Start();
+			//this.Hide();
         }
+        
 	}
 }
