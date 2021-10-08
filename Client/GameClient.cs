@@ -6,8 +6,8 @@ using osu.Framework.Screens;
 using osu.Framework;
 
 namespace Test1.Client {
-	public class GameClient : Game {
-		private ScreenStack screenStack;
+    public class GameClient : Game {
+        private ScreenStack screenStack;
 
         [BackgroundDependencyLoader]
         private void load()
@@ -19,8 +19,6 @@ namespace Test1.Client {
 
         protected override void LoadComplete()
         {
-            this.Hide();
-            this.Size = new(0, 0);
             TrackBass b = new(File.OpenRead("/home/mrwoto/Music/01 - Kyoumen no Nami.mp3"));
             //TrackBass b = new(File.OpenRead("/home/mrwoto/Ali/Animes/Black/Black Clover - 165 [480p].mkv"));
             
@@ -30,14 +28,12 @@ namespace Test1.Client {
             b.Completed += () => {
                 System.Console.WriteLine("completed");
             };
-            //
+            
             Audio.AddItem(b);
-            //base.LoadComplete();
-			
+            
             screenStack.Push(new MainScreen());
             b.Start();
-			//this.Hide();
         }
         
-	}
+    }
 }
